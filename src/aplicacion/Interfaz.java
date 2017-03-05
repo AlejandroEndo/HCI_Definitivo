@@ -1,6 +1,7 @@
 package aplicacion;
 
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PImage;
 
 public class Interfaz {
@@ -96,7 +97,8 @@ public class Interfaz {
 
 			// -------- Medidor Confianza -------------------------
 			int promedio = (confianza * 100) / confianzaTotal;
-			app.text("Porcentaje de confianza: " + promedio + "%", app.width / 2, 650);
+			app.textAlign(PConstants.CENTER);
+			app.text("Porcentaje de confianza: " + promedio + "%", 250, 670);
 			// ------------------------------------------------
 			break;
 

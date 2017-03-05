@@ -12,6 +12,7 @@ import serializables.Mensaje;
 public class Logica implements Observer {
 
 	private PImage compa;
+	private PImage cops;
 
 	private Conexion con;
 	private Interfaz interfaz;
@@ -69,6 +70,7 @@ public class Logica implements Observer {
 		interfaz = new Interfaz(app);
 
 		compa = app.loadImage("../data/compa.png");
+		cops = app.loadImage("../data/cops.png");
 
 		// dependiendo de el id, se inicia algo diferente
 		switch (con.getId()) {
@@ -129,6 +131,9 @@ public class Logica implements Observer {
 				app.fill(0, 50);
 				app.rect(500, 0, 700, 700);
 				textoInterfaz = "Indica a tu aliado";
+				app.textAlign(PConstants.CENTER, PConstants.CENTER);
+				app.fill(255);
+				app.text("ESPERANDO\nINDICACIÓN...", 850, app.height/2);
 			}
 		}
 
@@ -301,7 +306,7 @@ public class Logica implements Observer {
 					break;
 
 				case 5:
-					app.fill(178, 0, 80);
+					app.fill(0, 182, 110);
 					break;
 				}
 				
@@ -310,6 +315,11 @@ public class Logica implements Observer {
 				if (matrix[j][i] == 3) {
 					app.imageMode(PConstants.CORNER);
 					app.image(compa, i * s + 70, j * s + 70);
+					app.imageMode(PConstants.CENTER);
+				}
+				if(matrix[j][i] == 5) {
+					app.imageMode(PConstants.CORNER);
+					app.image(cops, i * s + 70, j * s + 70);
 					app.imageMode(PConstants.CENTER);
 				}
 			}
