@@ -20,6 +20,8 @@ public class Interfaz {
 	private PImage[] direccion = new PImage[5];
 	private PImage[] botones = new PImage[5];
 	private PImage[] botonesOver = new PImage[5];
+	private PImage[] direccionMouse = new PImage[4];
+	private PImage[] overMouse = new PImage[4];
 
 	private int pantalla;
 	private int laberintator;
@@ -57,6 +59,11 @@ public class Interfaz {
 			botones[i] = app.loadImage("../data/dir" + i + ".png");
 			botonesOver[i] = app.loadImage("../data/over" + i + ".png");
 		}
+
+		for (int i = 0; i < 4; i++) {
+			direccionMouse[i] = app.loadImage("../data/m" + i + ".png");
+			overMouse[i] = app.loadImage("../data/mo" + i + ".png");
+		}
 	}
 
 	public void draw() {
@@ -81,6 +88,8 @@ public class Interfaz {
 			app.image(fondoLab, 850, app.height / 2);
 			app.image(laberinto[laberintator], 850, app.height / 2);
 			app.image(turno, app.width / 2, app.height / 2);
+
+			mouseDirection();
 			// ------------------------------------------------------
 
 			// ---------Zona Comunicacion--------------------------
@@ -105,7 +114,7 @@ public class Interfaz {
 		}
 	}
 
-	public void showOver() {
+	private void showOver() {
 		if (PApplet.dist(250, 450, app.mouseX, app.mouseY) < 25) {
 			app.image(botonesOver[0], 250, 450);
 		}
@@ -121,6 +130,25 @@ public class Interfaz {
 		if (PApplet.dist(250, 525, app.mouseX, app.mouseY) < 25) {
 			app.image(botonesOver[4], 250, 525);
 		}
+	}
+
+	private void mouseDirection() {
+		app.image(direccionMouse[0], 850, 100);
+		app.image(direccionMouse[1], 1100, 350);
+		app.image(direccionMouse[2], 850, 600);
+		app.image(direccionMouse[3], 600, 350);
+
+		if (PApplet.dist(850, 100, app.mouseX, app.mouseY) < 50)
+			app.image(overMouse[0], 850, 100);
+		
+		if (PApplet.dist(1100, 350, app.mouseX, app.mouseY) < 50)
+			app.image(overMouse[1], 1100, 350);
+		
+		if (PApplet.dist(850, 600, app.mouseX, app.mouseY) < 50)
+			app.image(overMouse[2], 850, 600);
+		
+		if (PApplet.dist(600, 350, app.mouseX, app.mouseY) < 50)
+			app.image(overMouse[3], 600, 350);
 	}
 
 	public int getPantalla() {

@@ -93,7 +93,7 @@ public class Logica implements Observer {
 
 	}
 
-	public void pintar() {
+	public void draw() {
 		interfaz.draw();
 
 		if (app.mouseX > 432 && app.mouseX < 769 && app.mouseY > 572 && app.mouseY < 632) {
@@ -133,7 +133,7 @@ public class Logica implements Observer {
 				textoInterfaz = "Indica a tu aliado";
 				app.textAlign(PConstants.CENTER, PConstants.CENTER);
 				app.fill(255);
-				app.text("ESPERANDO\nINDICACIÓN...", 850, app.height/2);
+				app.text("ESPERANDO\nINDICACIÓN...", 850, app.height / 2);
 			}
 		}
 
@@ -159,6 +159,24 @@ public class Logica implements Observer {
 			}
 		}
 
+	}
+
+	private void toFinish() {
+		// vitoria
+		if (matrixA[0][7] == 3 || matrixB[0][0] == 3)
+			interfaz.setPantalla(99);
+
+		// Errota A
+		if (matrixA[0][2] == 3 || matrixA[0][4] == 3 || matrixA[1][0] == 3 || matrixA[3][0] == 3 || matrixA[7][4] == 3
+				|| matrixA[7][6] == 3) {
+
+		}
+
+		// Errota B
+		if (matrixB[0][3] == 3 || matrixB[0][6] == 3 || matrixB[2][7] == 3 || matrixB[4][7] == 3 || matrixB[7][1] == 3
+				|| matrixB[7][3] == 3) {
+
+		}
 	}
 
 	public void click() {
@@ -309,15 +327,15 @@ public class Logica implements Observer {
 					app.fill(0, 182, 110);
 					break;
 				}
-				
+
 				app.rect(i * s + 70, j * s + 70, s, s);
-				
+
 				if (matrix[j][i] == 3) {
 					app.imageMode(PConstants.CORNER);
 					app.image(compa, i * s + 70, j * s + 70);
 					app.imageMode(PConstants.CENTER);
 				}
-				if(matrix[j][i] == 5) {
+				if (matrix[j][i] == 5) {
 					app.imageMode(PConstants.CORNER);
 					app.image(cops, i * s + 70, j * s + 70);
 					app.imageMode(PConstants.CENTER);
